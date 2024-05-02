@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <Center>
+            <h1>Age Calculator</h1>
+            <h3>Enter your date of birth : </h3>
+            <br>
+            <input type="date" id="inp" value="">
+            <button onclick="calculate()" id="btn">Calculate Age</button>
+            <h2 id="result"></h2>
+        
+        </Center>
+    </div>
+    <script>
+        const inp=document.querySelector("#inp");
+        const btn=document.querySelector("#btn");
+        const result=document.querySelector("#result");
+    
+        calculate=()=>{
+            let age=0;
+            console.log("clicked");
+            if(inp.value==""){alert("Enter D.O.B")} 
+            else{ 
+                 getage(inp.value);
+            }
+         
+        }
+        const getage=(inpage)=>{
+            let age=0;
+            const currentdate=new Date();
+           let curryr= currentdate.getFullYear();
+            let currmon=  currentdate.getMonth();
+            let currdate=currentdate.getDate();
+
+            const bdaydate=new Date(inpage);
+            let dobyr=bdaydate.getFullYear();
+            let dobmon=bdaydate.getMonth();
+            let dobdate=bdaydate.getDate();
+            let isleaf=false;
+            if((dobyr%4==0 && dobyr%100!=0)||dobyr%400==0){
+                isleaf=true;
+
+            }
+            if(dobdate>currdate){
+                if(currmon==3||currmon==5||currmon==8||currmon==10){currdate=currdate+30;}
+                else if(currmon==1 && isleaf){currdate=currdate+29;}
+                else if(currmon==1 && !isleaf){currdate=currdate+28;}
+                else {currdate=currdate+31};
+                currmon=currmon-1;
+
+            }
+            if(currmon<dobmon){
+                currmon=currmon+12;
+                curryr=curryr-1;
+
+            }if((curryr-dobyr)<0){result.innerHTML=`OMG! You are not even born`}
+            else{
+            result.innerHTML=`Your age is ${curryr-dobyr} years - ${currmon-dobmon} months - ${currdate-dobdate} days`;}
+        }
+
+
+    </script>
+</body>
+</html>
