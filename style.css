@@ -1,5 +1,5 @@
 *{
-    margin: 0px;
+    margin: 0px
     padding: 0px;
 }
 #container{
@@ -40,4 +40,5 @@ button{
     width: 160px;
     height: 40px;
     font-size:20px;
+
 }
