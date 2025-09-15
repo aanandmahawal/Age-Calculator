@@ -1,6 +1,6 @@
 *{
     margin: 
-    padding: 0
+    padding: 
 }
 #container{
     height:300px;
@@ -42,6 +42,7 @@ button{
     font-size:20px;
 
 }
+
 
 
 
